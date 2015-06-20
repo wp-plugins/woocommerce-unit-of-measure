@@ -13,7 +13,7 @@ Text Domain: woocommerce-uom
 @author		 Bradley Davis
 @category    Admin
 @package	 WooCommerce RRP
-@since		 1.0
+@since		 1.0.1
 
 WooCommerce Unit Of Measure. A Plugin that works with the WooCommerce plugin for WordPress.
 Copyright (C) 2014 Bradley Davis - bd@bradley-davis.com
@@ -43,14 +43,11 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	class Woo_UOM {
 		/**
 		 * The Constructor!
-		 * @since 1.0
+		 * @since 1.0.1
 		 */
 		public function __construct() {
-			// If admin or manager show uom input fields on product and save or update the input field
-			// if ( is_admin() || shop_manager() ) :
-				add_action( 'woocommerce_product_options_general_product_data', array( &$this, 'woo_uom_product_fields' ) );
-				add_action( 'woocommerce_process_product_meta', array( &$this, 'woo_uom_save_field_input' ) );
-			// endif;
+			add_action( 'woocommerce_product_options_general_product_data', array( &$this, 'woo_uom_product_fields' ) );
+			add_action( 'woocommerce_process_product_meta', array( &$this, 'woo_uom_save_field_input' ) );
 			// Render the uom field output on the frontend
 			add_filter( 'woocommerce_get_price_html', array( &$this, 'woo_uom_render_output' ) );
 		}
@@ -90,15 +87,15 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 		/**
 		 * Render the output
-		 * @since 1.0
+		 * @since 1.0.1
 		 * @return $price + UOM string
 		 */
-		public function woo_uom_render_output( $price, $product ) {
+		public function woo_uom_render_output( $price ) {
 			global $woocommerce, $post;
 			// Display Custom Field Value
-			$somenewvar = get_post_meta( $post->ID, '_woo_uom_input', true );
+			$woo_uom_output = get_post_meta( $post->ID, '_woo_uom_input', true );
 
-			return $price . '&nbsp;' . $somenewvar;
+			return $price . '&nbsp;' . $woo_uom_output;
 		}
 	} // END class Woo_UOM
 
