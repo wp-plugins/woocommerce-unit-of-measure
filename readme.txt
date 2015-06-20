@@ -3,7 +3,7 @@ Contributors: Brad Davis
 Tags: woocommerce, woocommerce-price
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,11 +15,6 @@ WooCommerce Unit Of Measure allows you to add a unit of measure (UOM), or any te
 ** Requires WooCommerce to be installed. **
 
 == Installation ==
-
-= WooCommerce Compatibility =
-
-Tested on 2.3.10
-
 1. Upload WooCommerce Image Hover to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. That's it.
